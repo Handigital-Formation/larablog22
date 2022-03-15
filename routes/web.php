@@ -13,6 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     $tasks = [
+//         'Aller faire les courses',
+//         'Aller à la gym',
+//         'Dormir'
+//     ];
+    
+//     return view('home',[
+//         'maVar' => request('name'),
+//         'tasks' => $tasks
+//     ]);
+// });
+
+use App\Http\Controllers\PagesController;
+
+Route::get('/', [PagesController::class, 'home']);
+Route::get('/contact', [PagesController::class, 'contact']);
+Route::get('/about', [PagesController::class, 'about']);
