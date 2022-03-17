@@ -16,10 +16,12 @@
         </style>
     </head>
     <body class="antialiased">
+      
       <div class="menu">
 	<a href="/">HOME</a>
 	<a href="/contact">CONTACT</a>
 	<a href="/about">ABOUT</a>
+	<a href="/project">PROJECT</a>
       </div>
       
       @yield('content')
