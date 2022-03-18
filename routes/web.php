@@ -33,6 +33,8 @@ Route::get('/contact', [PagesController::class, 'contact']);
 Route::get('/about', [PagesController::class, 'about']);
 
 use App\Http\Controllers\ProjectController;
-Route::get('/project', [ProjectController::class, 'index']);
-Route::get('/project/create', [ProjectController::class, 'create']);
-Route::post('/project', [ProjectController::class, 'store']);
+// Route::get('/project', [ProjectController::class, 'index']);
+// Route::get('/project/create', [ProjectController::class, 'create']);
+// Route::post('/project', [ProjectController::class, 'store']);
+//Route::get('/project/{id}', [ProjectController::class, 'show']);
+Route::resource('/project', ProjectController::class);
