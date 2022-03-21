@@ -6,9 +6,11 @@
   
   <ul>
     @foreach ($projects as $project )
-      <li><a href="/project/{{$project->id}}">{{ $project->title }}</a></li>
+      <li>
+	{{ $project->title }}
+      </li>
     @endforeach
   </ul>
 
-  <a href="/project/create" class="button">Créer un nouveau projet</a>
+  <a href="/project/create" class="button">> Créer un nouveau projet</a>
 @endsection

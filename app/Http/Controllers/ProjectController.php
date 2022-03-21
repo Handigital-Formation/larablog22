@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Project;
 use Illuminate\Http\Request;
-use \App\Models\Project;
 
 class ProjectController extends Controller
 {
@@ -15,7 +15,6 @@ class ProjectController extends Controller
     public function index()
     {
         //
-        
         $projects = Project::all(); 
         
         return view('project.index',[
@@ -47,8 +46,11 @@ class ProjectController extends Controller
 
         $project->title = request('title'); //on set le titre avec la donnée envoyée du formulaire
         $project->description = request('description');
+        $project->user_id = 1;
 
         $project->save(); // on enregistre dans la base
+
+        //Project::create(request(['title', 'description']));
 
         return redirect('/project'); // méthode pour rediriger vers une autre url (en get par défaut)
     }
@@ -56,14 +58,17 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Project $project)
     {
         //
-        $project = Project::find($id);
+        // $user_id = $project->user_id;
+        // $user = \App\Models\User::find($user_id);
 
+        // return $user;
+        
         return view('project.show', [
             'project' => $project
         ]);
@@ -72,33 +77,46 @@ class ProjectController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Project $project)
     {
         //
+        //$project = Project::find($id);
+        return view('project.edit',[
+            'project' => $project
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
         //
+        //$project = new Project(); //on instancie un nouveau projet
+        
+        //$project = Project::find($id);
+        $project->title = request('title'); //on set le titre avec la donnée envoyée du formulaire
+        $project->description = request('description');
+
+        $project->save(); // on enregistre dans la base
+
+        return redirect('/project'); // méthode pour rediriger vers une autre url (en get par défaut)
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Project  $project
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
         //
     }

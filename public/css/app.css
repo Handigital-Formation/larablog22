@@ -22,9 +22,9 @@ ul {
     margin: 10px 0 20px;
 }
 .button {
-    background: lightblue;
+    background: lightgrey;
     border: 1px solid black;
     border-radius: 10px;
-    padding: 10px;
+    padding: 5px 10px;
     margin-top:20px;
 }
